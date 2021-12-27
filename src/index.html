@@ -10,6 +10,15 @@
         body {
             text-align: center;
         }
+
+        .icon-wrapper {
+            margin: 0 10px;
+        }
+
+        .icon {
+            width: 25px;
+            height: 25px;
+        }
     </style>
 </head>
 <body>
@@ -40,6 +49,8 @@
     <br>
     <i>Check again later!</i>
 
+    <p id="contact-icons"></p>
+
     <script>
         (() => {
             const catPicture = document.getElementById("cat-picture");
@@ -57,6 +68,79 @@
                 catPicture.hidden = !catPicture.hidden;
                 btnActionLabel.innerText = imgIsHidden ? revealLabel : hideLabel;
             }
+        })();
+
+
+        (() => {
+            const contactInfo = [
+                {
+                    iconWrapper: {
+                        cssClass: "icon-wrapper",
+                        url: "mailto:programmer1718@gmail.com",
+                        target: "_blank"
+                    },
+                    iconDetails: {
+                        cssClass: "icon",
+                        src: "assets/icons/envelope-solid.svg",
+                        description: "Email"
+                    }
+                },
+                {
+                    iconWrapper: {
+                        cssClass: "icon-wrapper",
+                        url: "https://github.com/programmer1718",
+                        target: "_blank"
+                    },
+                    iconDetails: {
+                        cssClass: "icon",
+                        src: "assets/icons/github-square-brands.svg",
+                        description: "GitHub"
+                    }
+                },
+                {
+                    iconWrapper: {
+                        cssClass: "icon-wrapper",
+                        url: "https://linkedin.com/in/jcgonzalez90",
+                        target: "_blank"
+                    },
+                    iconDetails: {
+                        cssClass: "icon",
+                        src: "assets/icons/linkedin-brands.svg",
+                        description: "LinkedIn"
+                    }
+                },
+                {
+                    iconWrapper: {
+                        cssClass: "icon-wrapper",
+                        url: "https://twitter.com/programmer1718",
+                        target: "_blank"
+                    },
+                    iconDetails: {
+                        cssClass: "icon",
+                        src: "assets/icons/twitter-square-brands.svg",
+                        description: "Twitter"
+                    }
+                }
+            ];
+            
+            const buildAndAppendContactIcons = (contactInfo, targetContainer) => {
+                for (const iconMetadata of contactInfo) {
+                    let anchorTag = document.createElement("a");
+                    anchorTag.classList.add(iconMetadata.iconWrapper.cssClass);
+                    anchorTag.href = iconMetadata.iconWrapper.url;
+                    anchorTag.target = iconMetadata.iconWrapper.target;
+    
+                    let imgElem = document.createElement("img");
+                    imgElem.classList.add(iconMetadata.iconDetails.cssClass);
+                    imgElem.src = iconMetadata.iconDetails.src;
+                    imgElem.alt = iconMetadata.iconDetails.description;
+    
+                    anchorTag.appendChild(imgElem);
+                    targetContainer.appendChild(anchorTag);
+                }
+            }
+    
+            buildAndAppendContactIcons(contactInfo, document.getElementById("contact-icons"));
         })();
     </script>
 </body>
