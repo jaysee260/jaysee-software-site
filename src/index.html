@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JC Gonzalez</title>
+
+    <style>
+        body {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h2>Hello, world!</h2>
+    <h5>(cool domain, huh?)</h5>
+
+    <p>I just setup this site (12/27/2021 around noon) so it's pretty barebones.</p>
+    <p>Not much to see yet, other than a picture of my cat Smokey.</p>
+
+    <div>
+        <button id="reveal-btn">
+            Click to <span id="btn-action-label"></span>
+        </button>
+    </div>
+
+    <p>
+        <img
+            hidden
+            id="cat-picture"
+            src="assets/images/smokey-october-2021.jpeg"
+            alt="Smokey the cat"
+            width="300"
+            height="400"
+        >
+    </p>
+
+    <i>This site is under construction.</i>
+    <br>
+    <i>Check again later!</i>
+
+    <script>
+        (() => {
+            const catPicture = document.getElementById("cat-picture");
+            const revealBtn = document.getElementById("reveal-btn");
+            const btnActionLabel = document.getElementById("btn-action-label");
+            let imgIsHidden = true;
+            const revealLabel = "reveal";
+            const hideLabel = "hide";
+    
+            // Set button action label on load
+            btnActionLabel.innerText = "reveal";
+    
+            revealBtn.onclick = () => {
+                imgIsHidden = !imgIsHidden;
+                catPicture.hidden = !catPicture.hidden;
+                btnActionLabel.innerText = imgIsHidden ? revealLabel : hideLabel;
+            }
+        })();
+    </script>
+</body>
+</html>
